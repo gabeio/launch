@@ -26,16 +26,16 @@ else
 fi
 
 # install compilers
-echo "installing compilers"
-if [[ sys == "Ubuntu" ]]
+echo "installing compilers..."
+if [[ $sys == "Ubuntu" ]]
 then
 	echo "installing gcc, g++, make, nginx and git"
 	sudo apt-get install gcc g++ make wget nginx git
-elif [[ sys == "Rhel" ]]
+elif [[ $sys == "Rhel" ]]
 then
 	echo "installing gcc, g++, make, nginx and git"
 	sudo yum install gcc g++ make wget nginx git
-elif [[ sys == "Mac" ]]
+elif [[ $sys == "Mac" ]]
 then
 	echo "installing brew"
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
@@ -44,19 +44,22 @@ then
 fi
 
 # install libraries
-if [[ sys == "Ubuntu" ]]
+if [[ $sys == "Ubuntu" ]]
 then
 	echo " "
-elif [[ sys == "Rhel" ]]
+elif [[ $sys == "Rhel" ]]
 then
 	echo " "
-elif [[ sys == "Mac" ]]
+elif [[ $sys == "Mac" ]]
 then
 	echo " "
 fi
 
 # install nodejs
+echo " "
 echo "installing nodejs..."
+echo " "
+sleep 1
 wget http://nodejs.org/dist/node-latest.tar.gz
 tar xvf node-latest.tar.gz
 rm node-latest.tar.gz
@@ -67,11 +70,14 @@ cd node-*
 cd ../
 
 # install python
+echo " "
 echo "installing python2.7..."
-if [[ sys == "Ubuntu" ]]
+echo " "
+sleep 1
+if [[ $sys == "Ubuntu" ]]
 then
 	sudo apt-get install python2.7
-elif [[ sys == "Rhel" ]]
+elif [[ $sys == "Rhel" ]]
 then
 	echo "in this case installing python version unknown ... (most likely 2.6)"
 	sudo yum install python
@@ -81,7 +87,7 @@ then
 	cd setuptools-*
 	sudo python setup.py install
 	cd ../
-elif [[ sys == "Mac" ]]
+elif [[ $sys == "Mac" ]]
 then 
 	echo "installing python"
 	brew install python
