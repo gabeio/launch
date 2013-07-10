@@ -35,7 +35,7 @@ elif [[ sys == "Rhel" ]]
 then
 	echo "installing gcc, g++, make, nginx and git"
 	sudo yum install gcc g++ make wget nginx git
-elif [[ sys == "Mac"]]
+elif [[ sys == "Mac" ]]
 then
 	echo "installing brew"
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
