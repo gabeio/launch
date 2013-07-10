@@ -61,9 +61,9 @@ wget http://nodejs.org/dist/node-latest.tar.gz
 tar xvf node-latest.tar.gz
 rm node-latest.tar.gz
 cd node-*
-sh ./configure
-make
-make install
+./configure
+#make
+#make install
 cd ../
 
 # install python
@@ -85,8 +85,6 @@ elif [[ sys == "Mac"]]
 then 
 	echo "installing python"
 	brew install python
-else
-	# do nothing
 fi
 
 # install packages
