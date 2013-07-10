@@ -52,6 +52,8 @@ then
 elif [[ sys == "Mac" ]]
 then
 	echo ""
+else
+	# do nothing
 fi
 
 # install nodejs
@@ -84,6 +86,8 @@ elif [[ sys == "Mac"]]
 then 
 	echo "installing python"
 	brew install python
+else
+	# do nothing
 fi
 
 # install packages
