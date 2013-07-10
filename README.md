@@ -1,5 +1,4 @@
-launch
-======
+# launch:
 
 quickly install:  
 python & packages [bottle,jinja2,honcho,gunicorn]  
@@ -15,12 +14,10 @@ nodejs & packages [forever,http-proxy,passport]
 to run:
 `bash <(curl -fsSL https://raw.github.com/gabeio/launch/install)`
 
-Tested on:
-==========
+**Tested on:**
 - ubuntu (12.04)
 
-Soon to be tested on:
-=====================
+**Soon to be tested on:**
 - OS X 10.8
 - Fedora
 - Opensuse
