@@ -1,0 +1,99 @@
+#!/bin/bash
+# figure out system
+echo "Figuring out what system this is..."
+R=`uname -r`
+echo "..."
+V=`uname -v`
+echo "..."
+if [[ $V == *Ubuntu* ]]
+then
+	sys="Ubuntu"
+	os="Linux"
+	echo "I'm on ubuntu."
+elif [[ $R == *centos* ]] || [[ $R == *edora* ]] || [[ $V == *edora* ]] || [[ $V == *suse* ]] || [[ $R == *suse* ]]
+then
+	sys="Rhel"
+	os="Linux"
+	echo "I'm on either CentOS, Fedora or Opensuse."
+elif [[ $V == Darwin* ]]
+then
+	sys="Mac"
+	os="Darwin"
+	echo "I'm on osx."
+else
+	sys="Unknown"
+	echo "I don't know what system I am on."
+fi
+
+# install compilers
+if [[ sys == "Ubuntu" ]]
+then
+	echo "installing gcc, g++, make, nginx and git"
+	sudo apt-get install gcc g++ make wget nginx git
+elif [[ sys == "Rhel" ]]
+then
+	echo "installing gcc, g++, make, nginx and git"
+	sudo yum install gcc g++ make wget nginx git
+elif [[ sys == "Mac"]]
+then
+	echo "installing brew"
+	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+	echo "installing wget git"
+	brew install wget git
+fi
+
+# install libraries
+if [[ sys == "Ubuntu" ]]
+then
+	echo ""
+elif [[ sys == "Rhel" ]]
+then
+	echo ""
+elif [[ sys == "Mac" ]]
+then
+	echo ""
+fi
+
+# install nodejs
+echo "installing nodejs..."
+wget http://nodejs.org/dist/node-latest.tar.gz
+tar xvf node-latest.tar.gz
+rm node-latest.tar.gz
+cd node-*
+sh ./configure
+make
+make install
+cd ../
+
+# install python
+echo "installing python2.7..."
+if [[ sys == "Ubuntu" ]]
+then
+	sudo apt-get install python2.7
+elif [[ sys == "Rhel" ]]
+then
+	sudo yum install python2.7
+	wget https://pypi.python.org/packages/source/s/setuptools/setuptools-0.8.tar.gz
+	tar xvf setuptools-0.8.tar.gz
+	rm setuptools-0.8.tar.gz
+	cd setuptools-*
+	sudo python setup.py install
+	cd ../
+elif [[ sys == "Mac"]]
+then 
+	echo "installing python"
+	brew install python
+fi
+
+# install packages
+echo "installing pip for python"
+sudo easy_install pip
+echo "installing bottle, jinja2 and honcho for python"
+sudo pip install bottle jinja2 honcho gunicorn
+echo "installing coffe-script and forever globally"
+npm install -g coffee-script forever
+echo "installing express, http-proxy, passport"
+npm install express http-proxy passport
+
+echo "Setup complete."
+echo "Enjoy your new development ready system."
