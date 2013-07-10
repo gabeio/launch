@@ -81,7 +81,7 @@ echo "installing nodejs..."
 echo " "
 sleep 1
 wget http://nodejs.org/dist/node-latest.tar.gz
-tar xvf node-latest.tar.gz
+tar xvf node-latest.tar.gz > /dev/null
 rm node-latest.tar.gz
 cd node-*
 ./configure
