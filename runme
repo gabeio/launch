@@ -81,7 +81,7 @@ then
 	cd setuptools-*
 	sudo python setup.py install
 	cd ../
-elif [[ sys == "Mac"]]
+elif [[ sys == "Mac" ]]
 then 
 	echo "installing python"
 	brew install python
