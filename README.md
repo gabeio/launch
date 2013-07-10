@@ -28,3 +28,6 @@ to run:
 - Opensuse
 - CentOS
 - (and more)
+
+Todo:
+- add nvm to install script
