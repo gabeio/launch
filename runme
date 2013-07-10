@@ -26,6 +26,7 @@ else
 fi
 
 # install compilers
+echo "installing compilers"
 if [[ sys == "Ubuntu" ]]
 then
 	echo "installing gcc, g++, make, nginx and git"
@@ -47,13 +48,13 @@ fi
 # install libraries
 if [[ sys == "Ubuntu" ]]
 then
-	echo ""
+	echo " "
 elif [[ sys == "Rhel" ]]
 then
-	echo ""
+	echo " "
 elif [[ sys == "Mac" ]]
 then
-	echo ""
+	echo " "
 else
 	# do nothing
 fi
