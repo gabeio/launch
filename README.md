@@ -4,6 +4,11 @@ quickly install:
 - python & packages [bottle,jinja2,honcho,gunicorn]
 - nodejs & packages [forever,http-proxy,passport]
 
+**Prerequisites:**
+- Mac:
+ - Xcode
+ - OS X 10.7-10.8
+
 **Supported Systems:**
 - Ubuntu
 - CentOS
