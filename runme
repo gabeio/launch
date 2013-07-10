@@ -93,7 +93,7 @@ sudo easy_install pip
 echo "installing bottle, jinja2 and honcho for python"
 sudo pip install bottle jinja2 honcho gunicorn
 echo "installing coffe-script and forever globally"
-npm install -g coffee-script forever
+sudo npm install -g coffee-script forever
 echo "installing express, http-proxy, passport"
 npm install express http-proxy passport
 
