@@ -9,41 +9,61 @@ if [[ $V == *Ubuntu* ]]
 then
 	sys="Ubuntu"
 	os="Linux"
+	echo " "
 	echo "I'm on ubuntu."
+	echo " "
 elif [[ $R == *centos* ]] || [[ $R == *edora* ]] || [[ $V == *edora* ]] || [[ $V == *suse* ]] || [[ $R == *suse* ]]
 then
 	sys="Rhel"
 	os="Linux"
+	echo " "
 	echo "I'm on either CentOS, Fedora or Opensuse."
+	echo " "
 elif [[ $V == Darwin* ]]
 then
 	sys="Mac"
 	os="Darwin"
+	echo " "
 	echo "I'm on osx."
+	echo " "
 else
 	sys="Unknown"
+	echo " "
 	echo "I don't know what system I am on."
+	echo " "
 fi
 
 # install compilers
+echo " "
 echo "installing compilers..."
+echo " "
+sleep 1
 if [[ $sys == "Ubuntu" ]]
 then
+	echo " "
 	echo "installing gcc, g++, make, nginx and git"
+	echo " "
 	sudo apt-get install gcc g++ make wget nginx git
 elif [[ $sys == "Rhel" ]]
 then
+	echo " "
 	echo "installing gcc, g++, make, nginx and git"
+	echo " "
 	sudo yum install gcc g++ make wget nginx git
 elif [[ $sys == "Mac" ]]
 then
+	echo " "
 	echo "installing brew"
+	echo " "
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+	echo " "
 	echo "installing wget git"
+	echo " "
 	brew install wget git
 fi
 
 # install libraries
+
 if [[ $sys == "Ubuntu" ]]
 then
 	echo " "
@@ -76,10 +96,15 @@ echo " "
 sleep 1
 if [[ $sys == "Ubuntu" ]]
 then
+	echo " "
+	echo "installing python"
+	echo " "
 	sudo apt-get install python2.7
 elif [[ $sys == "Rhel" ]]
 then
+	echo " "
 	echo "in this case installing python version unknown ... (most likely 2.6)"
+	echo " "
 	sudo yum install python
 	wget https://pypi.python.org/packages/source/s/setuptools/setuptools-0.8.tar.gz
 	tar xf setuptools-0.8.tar.gz
@@ -94,14 +119,26 @@ then
 fi
 
 # install packages
+echo " "
 echo "installing pip for python"
+echo " "
 sudo easy_install pip
+echo " "
 echo "installing bottle, jinja2 and honcho for python"
+echo " "
 sudo pip install bottle jinja2 honcho gunicorn
+echo " "
 echo "installing coffe-script and forever globally"
+echo " "
 sudo npm install -g coffee-script forever
+echo " "
 echo "installing express, http-proxy, passport"
+echo " "
 npm install express http-proxy passport
 
+echo " "
+echo " "
 echo "Setup complete."
 echo "Enjoy your new development ready system."
+echo " "
+echo " "
