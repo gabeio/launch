@@ -72,7 +72,8 @@ then
 	sudo apt-get install python2.7
 elif [[ sys == "Rhel" ]]
 then
-	sudo yum install python2.7
+	echo "in this case installing python version unknown ... (most likely 2.6)"
+	sudo yum install python
 	wget https://pypi.python.org/packages/source/s/setuptools/setuptools-0.8.tar.gz
 	tar xvf setuptools-0.8.tar.gz
 	rm setuptools-0.8.tar.gz
