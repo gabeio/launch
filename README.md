@@ -1,8 +1,8 @@
 # launch:
 
-quickly install:  
-python & packages [bottle,jinja2,honcho,gunicorn]  
-nodejs & packages [forever,http-proxy,passport]  
+quickly install:
+- python & packages [bottle,jinja2,honcho,gunicorn]
+- nodejs & packages [forever,http-proxy,passport]
 
 **Supported Systems:**
 - Ubuntu
