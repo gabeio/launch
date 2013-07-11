@@ -32,3 +32,4 @@ to run:
 Todo:
 - add nvm to install script
 - add x11 for mac install
+- add install groovy
