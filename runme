@@ -85,9 +85,13 @@ tar xvf node-latest.tar.gz > /dev/null
 rm node-latest.tar.gz
 cd node-*
 ./configure
-#make
-#make install
+make
+make install
 cd ../
+echo " "
+echo "installing node version manager"
+echo " "
+wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 # install python
 echo " "
