@@ -1,5 +1,15 @@
 #!/bin/bash
 # figure out system
+echo "Asking for sudo"
+sudo -v
+if [ `id -u` -eq 0 ]
+then
+	echo "running as sudo"
+else    
+	echo "try running this script as a sudo user."
+	exit 1
+fi
+
 echo "Figuring out what system this is..."
 R=`uname -r`
 echo "..."
@@ -12,12 +22,12 @@ then
 	echo " "
 	echo "I'm on ubuntu."
 	echo " "
-elif [[ $R == *centos* ]] || [[ $R == *edora* ]] || [[ $V == *edora* ]] || [[ $V == *suse* ]] || [[ $R == *suse* ]]
+elif [[ $R == *centos* ]] || [[ $R == *edora* ]] || [[ $V == *edora* ]]
 then
 	sys="Rhel"
 	os="Linux"
 	echo " "
-	echo "I'm on either CentOS, Fedora or Opensuse."
+	echo "I'm on either CentOS or Fedora"
 	echo " "
 elif [[ $V == Darwin* ]]
 then
@@ -30,7 +40,27 @@ else
 	sys="Unknown"
 	echo " "
 	echo "I don't know what system I am on."
+	echo "but I will continue to try!"
 	echo " "
+	if hash zypper 2>/dev/null; then
+		sys="openSuse"
+		echo " "
+		echo "I'm on openSuse or Suse!"
+		echo "Trying to use zypper installer"
+		echo " "
+	elif hash apt-get 2>/dev/null; then
+		sys="Ubuntu"
+		echo " "
+		echo "I'm not on ubuntu, but I might be on debian"
+		echo "Trying to use apt-get installer"
+		echo " "
+	elif hash yum 2>/dev/null; then
+		sys="Rhel"
+		echo " "
+		echo "I'm not on centos or fedora but I might be on RHEL or a distro of rhel."
+		echo "Trying to use yum installer"
+		echo " "
+	fi
 fi
 
 # install compilers
@@ -50,6 +80,12 @@ then
 	echo "installing gcc, g++, make, nginx and git"
 	echo " "
 	sudo yum install gcc g++ make wget nginx git
+elif [[ $sys == "openSuse" ]]
+then
+	echo " "
+	echo "installing gcc g++ make wget nginx and git"
+	echo " "
+	sudo zypper install gcc g++ make wget nginx git
 elif [[ $sys == "Mac" ]]
 then
 	echo " "
@@ -92,6 +128,9 @@ echo " "
 echo "installing node version manager"
 echo " "
 wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+nvm install 0.8.24
+nvm install 0.10.12
+nvm alias default 0.10.12
 
 # install python
 echo " "
@@ -121,6 +160,14 @@ then
 	echo "installing python"
 	brew install python
 fi
+
+wget https://pypi.python.org/packages/source/s/setuptools/setuptools-0.8.tar.gz
+tar xf setuptools-0.8.tar.gz
+rm setuptools-0.8.tar.gz
+cd setuptools-0.8
+sudo python setup.py install
+cd ../
+rm setuptools-0.8
 
 # install packages
 echo " "
