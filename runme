@@ -27,14 +27,14 @@ then
 	sys="Rhel"
 	os="Linux"
 	echo " "
-	echo "I'm on either CentOS or Fedora"
+	echo "I'm on CentOS or Fedora"
 	echo " "
 elif [[ $V == Darwin* ]]
 then
 	sys="Mac"
 	os="Darwin"
 	echo " "
-	echo "I'm on osx."
+	echo "I'm on Darwin."
 	echo " "
 else
 	sys="Unknown"
